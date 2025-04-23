@@ -13,27 +13,14 @@ document.addEventListener('DOMContentLoaded', () => {
         const superResImages = document.querySelectorAll('.super-res-image');
         
         // Load reference image
-        referenceImage.src = './image1/ref.png';
+        referenceImage.src = './Wild samples/5/lq.png'; 
         referenceImage.onload = () => console.log('Reference image loaded successfully');
-        referenceImage.onerror = () => console.error('Error loading reference image');
+        referenceImage.onerror = (e) => console.error('Error loading reference image:', e);
         
-        // Define the image filenames in order
-        const imageFiles = [
-            '1_IGCP-v1.png',
-            '2_VQFR.jpg',
-            '3_codeformer.png',
-            '4_DR2.jpg',
-            '5_GPEN.png',
-            '6_GFPGAN.jpg',
-            '7_PULSE.jpg',
-            '1_IGCP-v1.png',  // Reusing first image for now
-            '2_VQFR.jpg'      // Reusing second image for now
-        ];
+        const imageFiles = ['igcp.png', 'difface.png', 'gpen.png', 'difbir.png', 'codeformer.png', 'dr2.jpg', 'pgdiff.png', 'gfpgan.png', 'vqfr.png'];
         
-        // Load super-resolved images
         superResImages.forEach((img, index) => {
-            if (index < imageFiles.length) {
-                const imagePath = `./image1/${imageFiles[index]}`;
+            const imagePath = `./Wild samples/5/${imageFiles[index]}`;
                 console.log(`Loading image ${index + 1}: ${imagePath}`);
                 img.src = imagePath;
                 img.onload = () => {
@@ -45,9 +32,6 @@ document.addEventListener('DOMContentLoaded', () => {
                     console.error(`Image path: ${imagePath}`);
                     console.error(`Error details:`, e);
                 };
-            } else {
-                console.warn(`No image file defined for index ${index}`);
-            }
         });
 
         // Initialize comparison sliders
