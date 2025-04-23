@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', () => {
         referenceImage.onerror = (e) => console.error('Error loading reference image:', e);
         
         // Define the image filenames in order
-        const imageFiles = [vqfr.png, gfpgan.png, difbir.png, igcp.png, codeformer.png, dr2.jpg, pgdiff.png, difface.png, gpen.png];
+        const imageFiles = ['vqfr.png', 'gfpgan.png', 'difbir.png', 'igcp.png', 'codeformer.png', 'dr2.jpg', 'pgdiff.png', 'difface.png', 'gpen.png'];
         
         // Load super-resolved images
         superResImages.forEach((img, index) => {
