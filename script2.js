@@ -91,11 +91,10 @@ document.addEventListener('DOMContentLoaded', () => {
         imageItems.forEach(item => {
             const overlay = item.querySelector('.rank-overlay');
             const rank = item.dataset.rank;
-            if (rank && rank !== '0') {
+            if (rank) {
                 overlay.textContent = rank;
             } else {
                 overlay.textContent = '';
-                item.dataset.rank = '0';
             }
         });
     }
@@ -105,13 +104,13 @@ document.addEventListener('DOMContentLoaded', () => {
         const imageItem = e.currentTarget.closest('.image-item');
         const currentItemRank = imageItem.dataset.rank;
 
-        if (currentItemRank && currentItemRank !== '0') {
+        if (currentItemRank) {
             // If already ranked, remove rank
-            imageItem.dataset.rank = '0';
+            imageItem.dataset.rank = '';
             currentRank = 1; // Reset current rank
             // Reorder remaining ranks
             const rankedItems = Array.from(imageItems)
-                .filter(item => item.dataset.rank !== '0')
+                .filter(item => item.dataset.rank !== '')
                 .sort((a, b) => parseInt(a.dataset.rank) - parseInt(b.dataset.rank));
             
             rankedItems.forEach((item, index) => {
@@ -133,7 +132,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Function to reset rankings
     function resetRankings() {
         imageItems.forEach(item => {
-            item.dataset.rank = '0';
+            item.dataset.rank = '';
         });
         currentRank = 1;
         updateRankOverlays();
@@ -142,7 +141,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Add click event listeners to image wrappers
     imageItems.forEach(item => {
-        item.dataset.rank = '0'; // Initialize with rank 0
+        item.dataset.rank = ''; // Initialize with rank 0
         const wrapper = item.querySelector('.image-wrapper');
         wrapper.addEventListener('click', handleImageClick);
     });
@@ -152,7 +151,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Add navigation button event listeners
     prevBtn.addEventListener('click', () => {
-        window.location.href = 'index1.html';
+        window.location.href = 'index.html';
     });
 
     nextBtn.addEventListener('click', () => {
